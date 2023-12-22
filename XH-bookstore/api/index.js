@@ -1,7 +1,7 @@
 const { request } = require("../utils/request.js")
-const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,category,buy } = require("./base")
+const { login,baseUrl,banner,goods,hotSearch,search,goodsDetails,cart,addCart,delCart,category,buy,recommend } = require("./base")
 /**
- * 网络请求方法
+ * 所有的网络请求方法在这里
  */
 
 /**
@@ -79,6 +79,11 @@ function getLogin(data){
     return request(baseUrl + login,"POST",data) 
 }
 
+function getRecommend(data){
+    return request(baseUrl + recommend,"GET",data)
+}
+
+// 导出
 module.exports = {
     getBanner,
     getGoods,
@@ -90,5 +95,6 @@ module.exports = {
     delGoodsCart,
     getCategory,
     getBuy,
-    getLogin
+    getLogin,
+    getRecommend
 }

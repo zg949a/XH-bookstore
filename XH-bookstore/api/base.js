@@ -1,8 +1,9 @@
 /**
- * 存储接口地址
+ * 存储接口地址,所有的接口都在这里
  */
+// 导出操作：方便调用
 module.exports = {
-    baseUrl:"http://localhost:3002",   // 公共地址
+    baseUrl:"http://localhost:3003",   // 公共地址
     banner:"/api/banner",                 // 轮播图
     goods:"/api/goods",                   // 商品列表
     hotSearch:"/api/keywords",            // 热门搜索
@@ -14,5 +15,5 @@ module.exports = {
     category:"/api/category",             // 分类
     buy:"/api/buy",                       // 购买
     login:"/api/login",                   // 登录
-    // address:"/api/cart/address"           // 收货地址
+    recommend:"/api/recommend"             //推荐
 }
