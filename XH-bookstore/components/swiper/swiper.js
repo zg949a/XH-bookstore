@@ -19,6 +19,7 @@ Component({
             type:Number,
             value:3000
         },
+        // 网络请求得到的数据
         swiperData:{
             type:Array,
             value:[]

@@ -1,3 +1,5 @@
+const { recommend } = require("../../api/base");
+
 // components/goods-list/goods-list.js
 Component({
     /**
@@ -7,7 +9,8 @@ Component({
         goodsData:{
             type:Array,
             value:[]
-        }
+        },
+        
     },
 
     /**
