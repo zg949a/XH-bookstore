@@ -53,6 +53,7 @@ Page({
             image:this.data.goodsDetails.topimage,
             currentID:this.data.goodsDetails.id
         }).then(res =>{
+            console.log(res.data);
             if(res.data.status === 200){
                 wx.showToast({
                   title: res.data.msg,

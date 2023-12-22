@@ -1,66 +1,48 @@
 // pages/recommend/recommend.js
+const { getRecommend } = require("../../api/index.js")
+
 Page({
 
     /**
      * 页面的初始数据
      */
+      
     data: {
-
+        page:1,
+        recommendData:[]
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.http(this.data.page)
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
+    http(page){
+        getRecommend({page}).then(res =>{
+            console.log(res.data.data.result)
+            if(!res.data.msg){
+                this.setData({
+                                        // 老数据合并新数据，做累加操作
+                    recommendData:this.data.recommendData.concat(res.data.data.result)
+                })
+            }else{
+                // 给出用户提示
+                wx.showToast({
+                  title: res.data.msg,
+                  icon:"success",
+                  duration:2000
+                })
+            }
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    // 滑倒底部加载数据：
+    onReachBottom(){
+        console.log("chudile")
+        this.setData({
+            page:this.data.page += 1
+        }
+        )
+        this.http(this.data.page)
     }
 })

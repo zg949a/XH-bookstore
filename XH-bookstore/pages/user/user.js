@@ -5,35 +5,39 @@ Page({
         userInfo: {},
         list:[
             {
-                text:"待付款",
-                icon:"paid",
+                text:"前端",
+                icon:"like",
                 color:"#ff0000"
             },
             {
-                text:"代发货",
-                icon:"gift-card-o",
+                text:"Python",
+                icon:"star",
                 color:"#2a83fe"
             },
             {
-                text:"待收货",
-                icon:"logistics",
+                text:"Java",
+                icon:"fire",
                 color:"#fd6012"
             },
             {
-                text:"评价",
-                icon:"other-pay",
+                text:"大数据",
+                icon:"gem",
                 color:"#fd4d72"
             },
             {
-                text:"售后",
-                icon:"refund-o",
+                text:"人工智能",
+                icon:"gift",
                 color:"#00b478"
-            }           
+            },
+            {
+                text:"算法u",
+                icon:"shop",
+                color:"#fe391f"
+            }
         ]
     },
     onLoad(options) {
         // 验证用户登录信息的状态是否处于有效期：增加一个接口，然后测试有效期
-        //检查用户信息是否在本地, 在本地即调出
         if(wx.getStorageSync('userInfo')){
             this.setData({
                 userInfo:wx.getStorageSync('userInfo')
@@ -41,7 +45,6 @@ Page({
         }
     },
     getUserProfile() {
-        // 获取用户信息接口
         wx.getUserProfile({
             desc: "展示用户信息",
             success: res => {

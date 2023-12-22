@@ -7,7 +7,7 @@ Page({
      */
     data: {
         activeKey:0,
-        categoryData:[],
+        getCategory:[],
         sliderData:[
             {
                 "id":0,
@@ -19,43 +19,11 @@ Page({
             },
             {
                 "id":2,
-                "text":"家用电器"
+                "text":"外国名著"
             },
             {
                 "id":3,
-                "text":"电脑办公"
-            },
-            {
-                "id":4,
-                "text":"玩具乐器"
-            },
-            {
-                "id":5,
-                "text":"家具家装"
-            },
-            {
-                "id":6,
-                "text":"男装"
-            },
-            {
-                "id":7,
-                "text":"男鞋"
-            },
-            {
-                "id":8,
-                "text":"女装"
-            },
-            {
-                "id":9,
-                "text":"女鞋"
-            },
-            {
-                "id":10,
-                "text":"美妆护肤"
-            },
-            {
-                "id":11,
-                "text":"户外运动"
+                "text":"玄幻小说"
             }
         ],
         currentTag:"热门推荐"
@@ -72,6 +40,7 @@ Page({
     },
     http(tag){
         getCategory({tag}).then(res =>{
+            console.log(res.data.data);
             if(res.data.status === 200){
                 this.setData({
                     categoryData:res.data.data

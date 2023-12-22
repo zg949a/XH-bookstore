@@ -1,3 +1,4 @@
+// 引入：
 const { getBanner,getGoods } = require("../../api/index.js")
 
 Page({
@@ -9,21 +10,21 @@ Page({
             interval:3000,
             duration:1000,
             swiperData:[]
-        },
+        }, 
         navData:[
             {
-                text:"专业书籍",
+                text:"名著",
                 icon:"star",
-                color:"#ec6c5f"
+                color:"#ec6c5f",
             },
             {
-                text:"古籍",
+                text:"小说",
                 icon:"like",
                 color:"#ec6c5f"
             },
             {
-                text:"会员",
-                icon:"fire",
+                text:"乐谱",
+                icon:"music",
                 color:"#ec6c5f"
             },
             {
@@ -33,7 +34,7 @@ Page({
             },
             {
                 text:"充值",
-                icon:"phone",
+                icon:"smile",
                 color:"#ec6c5f"
             },
             {
@@ -42,21 +43,35 @@ Page({
                 color:"#ec6c5f"
             },
             {
-                text:"外卖",
+                text:"签到",
                 icon:"gift-card",
                 color:"#ec6c5f"
             },
             {
-                text:"美食",
-                icon:"smile",
+                text:"新品",
+                icon:"new",
+                color:"#ec6c5f"
+            },
+            {
+                text:"会员",
+                icon:"fire",
+                color:"#ec6c5f"
+            },
+            {
+                text:"客服",
+                icon:"service",
                 color:"#ec6c5f"
             }
         ],
         page:1,
         goodsData:[]
     },
+
+      
+    // 生命周期函数：
     onLoad() {
         getBanner().then(res =>{
+            console.log(res.data.data.result)
             this.setData({
                 indicatorDots:true,
                 autoplay:true,
@@ -69,9 +84,9 @@ Page({
     },
     http(page){
         getGoods({page}).then(res =>{
+            console.log(res.data.data.result)
             if(!res.data.msg){
                 this.setData({
-                    // 老数据合并新数据，做累加操作
                     goodsData:this.data.goodsData.concat(res.data.data.result)
                 })
             }else{
@@ -84,6 +99,7 @@ Page({
             }
         })
     },
+
     onReachBottom(){
         // 更改页码
         this.setData({

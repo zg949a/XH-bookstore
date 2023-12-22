@@ -1,3 +1,6 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "demo-list":"../../components/demo-list/demo-list"
+    },
+    "onReachBottomDistance": 50
 }

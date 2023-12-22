@@ -8,7 +8,8 @@
 }
 
 .right-nav image{
-    width: 70px;
+    width: 80px;
+    height: 120px;
 }
     
 .right-nav text{

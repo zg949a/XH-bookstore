@@ -10,8 +10,8 @@
         <van-grid column-num="3">
             <van-grid-item use-slot wx:for="{{ categoryData }}" wx:key="index">
                 <view bindtap="clickItem" data-tag="{{ item.tag }}">
-                    <image mode="widthFix" src="{{ item.image }}"></image>
-                    <text>{{ item.tag }}</text>
+                    <image  src="{{ item.url }}"></image>
+                    <text>{{ item.tag}}</text>
                 </view>
             </van-grid-item>
         </van-grid>

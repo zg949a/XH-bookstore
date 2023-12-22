@@ -13,7 +13,7 @@ Page({
      */
     onLoad(options) {
         this.setData({
-            goodsData:JSON.parse(options.goodsData)
+            goodsData:JSON.parse(options.goodsData)  //反序列化解压
         })
     }
 })
