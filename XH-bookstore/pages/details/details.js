@@ -51,7 +51,7 @@ Page({
             title:this.data.goodsDetails.title,
             price:this.data.goodsDetails.price,
             image:this.data.goodsDetails.topimage,
-            currentID:this.data.goodsDetails.id,
+            currentID:this.data.goodsDetails.book_id,
             book_id:this.data.goodsDetails.book_id
         }).then(res =>{
             console.log(res.data);
