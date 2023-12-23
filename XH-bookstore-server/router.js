@@ -107,6 +107,7 @@ router.get("/goods/details", (req, res) => {
     var id = url.parse(req.url, true).query.id;
     const sql = "select * from goodsdetails where book_id=?";
     SQLConnect(sql, [id], (result) => {
+        console.log(result)
         if (result.length > 0) {
             res.send({
                 status: 200,
@@ -130,8 +131,10 @@ router.get("/cart/add", (req, res) => {
     var price = url.parse(req.url, true).query.price;
     var image = url.parse(req.url, true).query.image;
     var currentID = url.parse(req.url, true).query.currentID;
-    const sql = "insert into cart values (null,?,?,?,?)";
-    SQLConnect(sql, [title, image, price, currentID], (result) => {
+    var book_id = url.parse(req.url, true).query.book_id;
+    const sql1 = "insert into cart values (null,?,?,?,?,?)";
+    SQLConnect(sql1, [title, image, price, currentID,book_id], (result) => {
+        console.log(result)
         if (result.affectedRows > 0) {
             res.send({
                 status: 200,

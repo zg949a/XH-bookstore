@@ -11,12 +11,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `banner`;
 CREATE TABLE `banner`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `descs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `class` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                           `id` int(11) NOT NULL AUTO_INCREMENT,
+                           `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                           `descs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                           `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                           `class` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                           PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -32,12 +32,13 @@ INSERT INTO `banner` VALUES (4, 'https://tse2-mm.cn.bing.net/th/id/OIP-C.84ZMZQS
 -- ----------------------------
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `image` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `price` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `currentID` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+                         `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                         `image` mediumtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                         `price` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                         `currentID` int(11) NULL DEFAULT NULL,
+                         `book_id` INT(10),
+                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'newTable' ROW_FORMAT = Dynamic;
 
 
@@ -46,14 +47,14 @@ CREATE TABLE `cart`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `price` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `cate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-	`tag` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                          `price` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                          `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+                          `cate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+                          `tag` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                          `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                          PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -91,12 +92,12 @@ INSERT INTO `goods` VALUES (26, '正版现货 惟我独仙典藏版1-2-3-4-5-6-7
 -- ----------------------------
 DROP TABLE IF EXISTS `goodsdetails`;
 CREATE TABLE `goodsdetails`  (
-  `book_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `details` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `price` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `topimage` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  PRIMARY KEY (`book_id`) USING BTREE
+                                 `book_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+                                 `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                 `details` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                 `price` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                 `topimage` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+--   PRIMARY KEY (`book_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'newTable' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -134,9 +135,9 @@ INSERT INTO `goodsdetails` VALUES (26, '正版现货 惟我独仙典藏版1-2-3-
 -- ----------------------------
 DROP TABLE IF EXISTS `keywords`;
 CREATE TABLE `keywords`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'content',
-  PRIMARY KEY (`id`) USING BTREE
+                             `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+                             `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'content',
+                             PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'newTable' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -157,8 +158,8 @@ INSERT INTO `keywords` VALUES (8, '平凡的世界');
 -- ----------------------------
 DROP TABLE IF EXISTS `my_users`;
 CREATE TABLE `my_users`  (
-  `user_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`user_id`) USING BTREE
+                             `user_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+                             PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -178,19 +179,21 @@ INSERT INTO `my_users` VALUES ('008');
 -- ----------------------------
 DROP TABLE IF EXISTS `purchase_history`;
 CREATE TABLE `purchase_history`  (
-  `user_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `book_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`user_id`, `book_id`) USING BTREE,
-  INDEX `book_id`(`book_id`) USING BTREE,
-  CONSTRAINT `purchase_history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `my_users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `purchase_history_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `goodsdetails` (`book_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+                                     `user_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+                                     `book_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+--   PRIMARY KEY (`user_id`, `book_id`) USING BTREE,
+--   INDEX `book_id`(`book_id`) USING BTREE,
+--   CONSTRAINT `purchase_history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `my_users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+--   CONSTRAINT `purchase_history_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `goodsdetails` (`book_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+ALTER TABLE purchase_history
+    MODIFY COLUMN book_id INT;
 
 -- ----------------------------
 -- Records of purchase_history
 -- ----------------------------
 INSERT INTO `purchase_history` VALUES ('001', '1');
-INSERT INTO `purchase_history` VALUES ('003', '1');
+INSERT INTO `purchase_history` VALUES ('003', '13');
 INSERT INTO `purchase_history` VALUES ('008', '10');
 INSERT INTO `purchase_history` VALUES ('007', '11');
 INSERT INTO `purchase_history` VALUES ('005', '12');
@@ -219,10 +222,10 @@ INSERT INTO `purchase_history` VALUES ('007', '9');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
-  `openid` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `session_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                         `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+                         `openid` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                         `session_key` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'newTable' ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
@@ -232,14 +235,14 @@ SET FOREIGN_KEY_CHECKS = 1;
 -- ----------------------------
 DROP TABLE IF EXISTS `recommend`;
 CREATE TABLE `recommend`  (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `price` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `cate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-	`tag` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                              `book_id` int(11) NOT NULL AUTO_INCREMENT,
+                              `title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                              `price` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                              `url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+                              `cate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+                              `tag` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                              `classID` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+                              PRIMARY KEY (`book_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -250,4 +253,20 @@ INSERT INTO `recommend` VALUES (19, '老友爱人和大麻烦：马修派瑞回�
 INSERT INTO `recommend` VALUES (20, '正版 呼啸山庄 英文原版小说 Wuthering Heights 企鹅经典布面精装 简奥斯汀著英国文学读物商品 英文版进口书籍','89', 'https://gw.alicdn.com/imgextra/i2/2157923729/O1CN01i0O4kV1dPvfnAjXgY_!!0-item_pic.jpg_Q75.jpg_.webp', '文学名著', '呼啸山庄' ,'C');
 INSERT INTO `recommend` VALUES (21, '造神年代 中国科幻基石丛书 长篇科幻小说 刘慈欣 那多联合推荐 《三体》之后的中国科幻代表作 人工智能时代的启示录 新华正版', '129', 'https://gw.alicdn.com/imgextra/O1CN01sfqlJC1CP1QWtcZI6_!!101450072-0-picasso.jpg_Q75.jpg_.webp', '科幻小说','造神年代',  'B');
 INSERT INTO `recommend` VALUES (22, '亚特兰蒂斯人类起源三部曲 基因战争+末日病毒+美丽新世界全3册套装 历史科幻结合 科幻悬疑小说 凤凰新华书店旗舰店', '329', 'https://gw.alicdn.com/imgextra/i1/288902762/O1CN01AykY711WH2mluLT1m_!!0-item_pic.jpg_Q75.jpg_.webp', '科幻小说','亚特兰蒂斯人类起源三部曲',  'B');
-INSERT INTO `recommend` VALUES (23, '星髓正版书科幻小说 雨果奖得主罗伯特.里德力著 宇宙星球中的人类文明争端史诗级场面深刻思想智慧书籍全套短篇小说集作品', '89', 'https://gw.alicdn.com/imgextra/i3/2263306098/O1CN01FZgOBK1uuw4amsqJX_!!0-item_pic.jpg_Q75.jpg_.webp', '科幻小说','星髓',  'B')
+INSERT INTO `recommend` VALUES (23, '星髓正版书科幻小说 雨果奖得主罗伯特.里德力著 宇宙星球中的人类文明争端史诗级场面深刻思想智慧书籍全套短篇小说集作品', '89', 'https://gw.alicdn.com/imgextra/i3/2263306098/O1CN01FZgOBK1uuw4amsqJX_!!0-item_pic.jpg_Q75.jpg_.webp', '科幻小说','星髓',  'B');
+--
+-- ALTER TABLE purchase_history
+-- DROP FOREIGN KEY purchase_history_ibfk_2;
+
+DELIMITER $$
+
+CREATE TRIGGER after_cart_insert
+    AFTER INSERT ON cart
+    FOR EACH ROW
+BEGIN
+    INSERT INTO purchase_history (user_id, book_id)
+    VALUES ('009', NEW.book_id);  -- 直接使用常量值 007 作为 user_id
+END
+
+    $$ DELIMITER ;
+
