@@ -96,7 +96,8 @@ CREATE TABLE `goodsdetails`  (
                                  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
                                  `details` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
                                  `price` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-                                 `topimage` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL
+                                 `topimage` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  PRIMARY KEY (`id`)
 --   PRIMARY KEY (`book_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'newTable' ROW_FORMAT = Dynamic;
 
